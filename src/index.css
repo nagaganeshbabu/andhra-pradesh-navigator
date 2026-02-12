@@ -152,6 +152,22 @@
     @apply bg-card/95 backdrop-blur-2xl;
   }
 }
+/* FIX: Prevents the map from overlapping the sidebar and UI */
+.leaflet-container {
+  z-index: 1 !important; /* Forces the map to stay behind your UI */
+  position: relative;
+}
+
+/* FIX: Ensures the sidebar and search inputs stay on top */
+aside, .sidebar-container, [role="complementary"] {
+  position: relative;
+  z-index: 50; /* Higher than map, lower than popups */
+}
+
+/* FIX: Ensure the map doesn't repeat horizontally like in your photo */
+.leaflet-tile-container {
+  pointer-events: auto;
+}
 
 /* Leaflet overrides */
 .leaflet-container {
